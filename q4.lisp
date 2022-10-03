@@ -1,16 +1,31 @@
-; define function
+; first attempt at isthere logic
+"
+(defun isthere (element l)
+  (cond ((equal element (car l)) t)
+  ((null l) nil)
+  ((isthere element (cdr l)))))
+"
 
-; cond that the car of atom is desired
-    ; if so, return true
-    ; if it isnt current value:
-        ; cond that if there is a next value in list
-            ; call function on next value
-            ; return false
+; first attempt at islist logic
+"
+(defun islist (element)
+  (cond ((listp element)
+    (format t "a list" element))
+    (t (format t "not a list" element))))
+"
 
+; working example:
 
+(defun notlist (element)
+  ; return true if element is not a list
+  (cond ((listp element)
+    nil)
+    (t)))
 
-(defun isthere (e l)
-  (cond
-   ((null l) nil)
-   ((equal e (car l)) t)
-   ((isthere e (cdr l)))))
+(defun isthere (element l)
+  ; if element equals value of l and l is not a list
+  (cond ((and (equal element (car l)) (notlist (car l))) t)
+  ; if l is null return nil
+  ((null l) nil)
+  ; neither condition met, recurse to next item in list
+  ((isthere element (cdr l)))))
