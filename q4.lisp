@@ -24,7 +24,7 @@
 
 (defun isthere (element l)
   ; if element equals value of l and l is not a list
-  (cond ((and (equal element (car l)) (notlist (car l))) t)
+  (cond ((and (eq element (car l)) (notlist (car l))) t)
   ; if l is null return nil
   ((null l) nil)
   ; neither condition met, recurse to next item in list
