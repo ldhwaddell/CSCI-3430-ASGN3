@@ -27,9 +27,17 @@
 
 (defun NSLicense (l)
   (cond 
-  ((checkLength l)t)
+  ((and (emptyInput l) (checkLength l))t)
   (nil)))
 
+
+(every #'eq (mapcar #'contains '(1 2 3)) `(T T T))
+
+; ####################Functions above line work####################
+(defun isUpper (element)
+  (cond ((upper-case-p element)
+    nil)
+    (t)))
 
 (defun isValidNum (l)
   (cond ((eq (if (member (car l) '(0 1 2 3 4 5 6 7 8 9)) t nil)t))
@@ -43,11 +51,6 @@
   ((isValidNum (cdr l)))))
 
 
-(defun NSLicense (l)
-  (if (eq (checkLength l) t)
-   t
-   nil))
-
 
 (defun NSLicense (l)
   (cond 
@@ -55,15 +58,17 @@
   ((null l) nil)
   ((isValidNum (cdr l)))))
 
-(defun isValidNum (l)
-  (if ((eq (if (member 8 '(0 1 2 3 4 5 6 7 8 9)) t nil)t))
-  (isValidNum (cdr l))
-  (princ "\nNothing changed.")))
 
-
-(defun contains (item) (if (member item `(1 2 3 4 5 6 7 8 9 0)) t nil))
+(defun contains (element) 
+(if (member element `(1 2 3 4 5 6 7 8 9 0)) 
+  t 
+  nil))
 
 (defun isValidNum (l)
+(if (contains (car l))
+  (contains (cdr l))
+  nil))
+
 
 
 
@@ -76,9 +81,9 @@
   (* n (factorial(- n 1)))))
 
 
+(every #`= `(mapcar #'contains '(9 8 7)) `(T T T))
 
-
-(if (member 1 '(2 3 4))'true 'false)
+(if (member 1 '(2 3 4))t nil)
 
 ;(member 23 '(0 1 2 3 4 5 6 7 8 9))
 
