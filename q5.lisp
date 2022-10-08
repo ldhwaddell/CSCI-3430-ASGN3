@@ -58,12 +58,6 @@
   ((null l) nil)
   ((isValidNum (cdr l)))))
 
-
-(defun contains (element) 
-(if (member element `(1 2 3 4 5 6 7 8 9 0)) 
-  t 
-  nil))
-
 (defun isValidNum (l)
 (if (contains (car l))
   (contains (cdr l))
