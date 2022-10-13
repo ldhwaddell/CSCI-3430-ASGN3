@@ -33,3 +33,13 @@
 (if (member element `(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)) 
   t 
   nil))
+
+(defun NSLicense (l)
+  ; check that list is of valid length and contains no sublists
+  (if (validateList l)
+  ; if first 3 items are valid letters and second 3 are valid numbers, return true
+  (cond ((and 
+    (every #'eq (mapcar #'validateFirstLetter (subseq l 0 1)) '(T))
+    (every #'eq (mapcar #'validateLetters (subseq l 1 3)) '(T T)) 
+    (every #'eq (mapcar #'containsNum (subseq l 3 6)) '(T T T))) t))
+  nil))
